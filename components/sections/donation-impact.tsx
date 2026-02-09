@@ -1,8 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
 
 export function DonationImpact() {
+  const divRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: divRef,
+    offset: ["start end", "end start"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0,0.5 ,1], [1.2, 1.1 ,1]);
+
   return (
     <section id="donate" className="bg-[#1a1a1a] py-24">
       <div className="container mx-auto px-4">
@@ -21,7 +32,11 @@ export function DonationImpact() {
         </div>
 
         {/* Map Interface Screenshot */}
-        <div className="relative w-full max-w-7xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-white/10 group">
+        <motion.div
+          ref={divRef}
+          style={{ scale }}
+          className="relative w-full max-w-7xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-white/10 group"
+        >
           <Image
             src="/image (9).jpg"
             alt="Impact Map Dashboard"
@@ -31,7 +46,7 @@ export function DonationImpact() {
           />
           {/* Optional Overlay Gradient for depth */}
           <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-xl pointer-events-none" />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

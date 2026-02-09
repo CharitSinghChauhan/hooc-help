@@ -19,9 +19,9 @@ const images = [
   },
   {
     url: "/image (2).jpg",
-    title: "Transforming Lives",
+    title: "Transparency at Every Step",
     subtitle:
-      "Witness how clean water changes everything for families around the globe.",
+      "100% of your donations go directly to water projects in the field.",
   },
   {
     url: "/image (3).jpg",
